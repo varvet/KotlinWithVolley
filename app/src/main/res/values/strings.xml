@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">KotlinWithVolley</string>
+    <string name="post_request">POST request</string>
+</resources>
