@@ -7,19 +7,17 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 
 class BackendVolley : Application() {
-    private var mRequestQueue: RequestQueue? = null
-
     override fun onCreate() {
         super.onCreate()
         instance = this
     }
 
-    val requestQueue: RequestQueue?
+    val requestQueue: RequestQueue? = null
         get() {
-            if (mRequestQueue == null) {
-                mRequestQueue = Volley.newRequestQueue(applicationContext)
+            if (field == null) {
+                return Volley.newRequestQueue(applicationContext)
             }
-            return mRequestQueue
+            return field
         }
 
     fun <T> addToRequestQueue(request: Request<T>, tag: String) {
@@ -33,8 +31,8 @@ class BackendVolley : Application() {
     }
 
     fun cancelPendingRequests(tag: Any) {
-        if (mRequestQueue != null) {
-            mRequestQueue!!.cancelAll(tag)
+        if (requestQueue != null) {
+            requestQueue!!.cancelAll(tag)
         }
     }
 
